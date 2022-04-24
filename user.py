@@ -1,3 +1,4 @@
+from credentials import Credentials
 class User:
     '''
     Class that generates instances of user accounts
@@ -23,3 +24,14 @@ class User:
         '''
         return cls.user_list    
 
+    @classmethod
+    def log_in(cls, name, password):
+        '''
+        Method that allows a user to log into their credential
+        '''
+
+        for user in cls.user_list:
+            if user.user_name == name and user.user_password == password:
+                return Credentials.credentials_list
+
+        return False
