@@ -9,6 +9,10 @@ class User:
     def __init__(self, user_name, user_password):
 
         #__init__ method to define the properties for our objects
-        
+
         self.user_name = user_name
         self.user_password = user_password
+
+    def save_user(self):
+        User.user_list.append(self)
+
