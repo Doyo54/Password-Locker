@@ -9,7 +9,7 @@ class Credentials:
         self.credential_name = credential_name
         self.credential_password = credential_password
 
-    def save_credential(self):
+    def save_credentials(self):
         '''
         Method that saves a user's credentials to credential list
         '''

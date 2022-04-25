@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.9
+
 from user import User
 from credentials import Credentials
 def create_user(Uname,password):
@@ -24,6 +25,17 @@ def logIn(name, password):
     if User.log_in(name, password) != False:
         return User.log_in(name, password)
 
+
+def new_credentials(Cname, Cpassword):
+    new_credentials = Credentials(Cname,Cpassword)
+    return new_credentials
+
+def save_credentials(credentials):
+    '''
+    Function to save new credentials
+    '''
+    credentials.save_credentials()
+
 def main():
             print("Hello Welcome to your Password locker. What is your name?")
             user_name=input()
@@ -44,8 +56,6 @@ def main():
 
                             print("Password ...")
                             password = input()
-
-
 
                             save_users(create_user(name,password)) # create and save new contact.
                             print ('\n')
@@ -71,10 +81,8 @@ def main():
                     elif short_code == 'lg':
                         print("\n")
                         print("Log into Password Locker Account")
-                        print("Enter the user name")
-                        user_name = input()
-                        print("Enter the password")
-                        user_password = input()
+                        user_name = input('Enter the user name: ')
+                        user_password = input('Enter Password: ')
 
                         if logIn(user_name,user_password) == None:
                           print("\n")
@@ -86,7 +94,11 @@ def main():
                           logIn(user_name,user_password)
                           print("\n")
                           print(f"{user_name} welcome to your Credentials")
-                           
+                          
+
+                                #    save_users(create_user(name,password))
+                                  
+
 
 
 
