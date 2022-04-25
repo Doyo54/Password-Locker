@@ -8,7 +8,7 @@ class TestUser(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_user = User("James","Muriuki") # create contact object
+        self.new_user = User("Josh","brian") # create contact object
 
 
     def test_init(self):
@@ -16,12 +16,12 @@ class TestUser(unittest.TestCase):
         test_init test case to test if the object is initialized properly
         '''
 
-        self.assertEqual(self.new_user.user_name,"James")
-        self.assertEqual(self.new_user.user_password,"Muriuki")
+        self.assertEqual(self.new_user.user_name,"Josh")
+        self.assertEqual(self.new_user.user_password,"brian")
 
     def test_save_user(self):
         self.new_user.save_user()
-        self.assertEqual(len(User.user_list),1)
+        self.assertEqual(len(User.user_list),3)
 
     def tearDown(self):
         '''
@@ -35,6 +35,16 @@ class TestUser(unittest.TestCase):
         '''
 
         self.assertEqual(User.display_user(),User.user_list)
+
+    def test_log_in(self):
+        '''
+        Test case to test if a user can log into their credentials
+        '''
+        self.new_user.save_user()
+        test_user = User("Josh","brian")
+        test_user.save_user()
+        self.assertEqual(User.log_in("Josh", "brian"), Credentials.credentials_list)   
+        
 
 if __name__ == '__main__':
     unittest.main()
