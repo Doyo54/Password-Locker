@@ -14,3 +14,10 @@ class Credentials:
         Method that saves a user's credentials to credential list
         '''
         Credentials.credentials_list.append(self)
+
+    @classmethod
+    def display_cred(cls):
+        '''
+        method that returns the contact list
+        '''
+        return cls.credentials_list       

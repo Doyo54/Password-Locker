@@ -36,6 +36,12 @@ def save_credentials(credentials):
     '''
     credentials.save_credentials()
 
+def display_cred():
+    '''
+    Function that returns all the saved users
+    '''
+    return Credentials.display_cred()
+
 def main():
             print("Hello Welcome to your Password locker. What is your name?")
             user_name=input()
@@ -94,10 +100,22 @@ def main():
                           logIn(user_name,user_password)
                           print("\n")
                           print(f"{user_name} welcome to your Credentials")
-                          
+                          while True:
+                              print('Use these short codes to get around: cc - Create new credentials, dc -Display credentials, cg - Create crendentials with generated Password, ex -Exit')
+                              short_code = input()
+                              if short_code == 'cc':
+                                   print("New User")
+                                   print("-"*10)
 
-                                #    save_users(create_user(name,password))
+                                   print ("User name ....")
+                                   name = input()
+
+                                   print("Password ...")
+                                   password = input()
+
+                                   save_credentials(new_credentials(name,password))
                                   
+                                   
 
 
 
