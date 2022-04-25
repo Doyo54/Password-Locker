@@ -50,7 +50,7 @@ def main():
             print('\n')
 
             while True:
-                    print("Use these short codes : ca - create a new User, lg - login into existing account, dc - display Existing accounts, ex -EXIT app")  
+                    print("Use these short codes : ca - create a new account, lg - login into existing account, dc - display Existing accounts, ex -EXIT app")  
                     short_code = input().lower()
 
                     if short_code == 'ca':
@@ -102,7 +102,8 @@ def main():
                           print(f"{user_name} welcome to your Credentials")
                           while True:
                               print('Use these short codes to get around: cc - Create new credentials, dc -Display credentials, cg - Create crendentials with generated Password, ex -Exit')
-                              short_code = input()
+                              short_code = input().lower()
+                              
                               if short_code == 'cc':
                                    print("New User")
                                    print("-"*10)
@@ -124,7 +125,7 @@ def main():
                                     print('\n')
                                   else:
                                     print('\n')
-                                    print("You dont seem to have any accounts saved yet")
+                                    print("You dont seem to have any Credentials saved yet")
                                     print('\n')
 
                                

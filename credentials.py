@@ -1,3 +1,5 @@
+import string
+import random
 class Credentials:
     credentials_list=[] #empty list of credentials
 
@@ -21,3 +23,17 @@ class Credentials:
         method that returns the contact list
         '''
         return cls.credentials_list       
+
+    @classmethod
+    def generate_password(cls):
+        '''
+        Method that generates a random alphanumeric password
+        '''
+
+        size = 8
+        alphanum = string.ascii_uppercase + string.digits + string.ascii_lowercase + "!@#$%^&*()"
+
+        # Create password
+        password = ''.join( random.choice(alphanum) for num in range(size) )
+        
+        return password    
