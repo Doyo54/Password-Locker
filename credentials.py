@@ -16,6 +16,13 @@ class Credentials:
         Method that saves a user's credentials to credential list
         '''
         Credentials.credentials_list.append(self)
+    
+    def delete_cred(self):
+        '''
+        delete_contact method deletes a saved contact from the contact_list
+        '''
+        Credentials.credentials_list.remove(self)
+    
 
     @classmethod
     def display_cred(cls):
@@ -36,4 +43,18 @@ class Credentials:
         # Create password
         password = ''.join( random.choice(alphanum) for num in range(size) )
         
-        return password    
+        return password  
+    @classmethod
+    def find_Credential(cls,credential_name):
+        '''
+        Method that takes in a number and returns a contact that matches that number.
+
+        Args:
+            number: Phone number to search for
+        Returns :
+            Contact of person that matches the number.
+        '''
+
+        for credentials in cls.credentials_list:
+            if credentials.credential_name == credential_name:
+                return credentials         

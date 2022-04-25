@@ -44,6 +44,18 @@ def display_cred():
 def random_password():
     return Credentials.generate_password()
 
+def delete_credential(credentials):
+    """
+    Function to delete a Credentials from credentials list
+    """
+    credentials.delete_cred()
+
+def find_credential(credential_name):
+    """
+    Function that finds a Credentials by an account name and returns the Credentials that belong to that account
+    """
+    return Credentials.find_Credential(credential_name)
+
 def main():
             print("Hello Welcome to your Password locker. What is your name?")
             user_name=input()
@@ -52,7 +64,7 @@ def main():
             print('\n')
 
             while True:
-                    print("Use these short codes : ca - create a new account, lg - login into existing account, dc - display Existing accounts, ex -EXIT app")  
+                    print("Use these short codes : \n ca - Create a new account \n lg - Login into existing account \n dc - Display existing accounts \n ex - Exit App")  
                     short_code = input().lower()
 
                     if short_code == 'ca':
@@ -103,7 +115,7 @@ def main():
                           print("\n")
                           print(f"{user_name} welcome to your Credentials")
                           while True:
-                              print('Use these short codes to get around: cc - Create new credentials, dc -Display credentials, cg - Create crendentials with generated Password, ex -Exit')
+                              print('Use these short codes: \n cc - Create new credentials \n dc -Display credentials \n cg - Create crendentials with generated Password \n dl - Delete credential \n lg - Log out')
                               short_code = input().lower()
 
                               if short_code == 'cc':
@@ -137,17 +149,30 @@ def main():
                                   name = input("Credential name: ")
                                   user_name =input("User name: ")
                                   print("Password succesfully generated")
-                                  
                                   password = random_password()
                                   
                                   print(f"Password: {password}")
                                   print('\n')
-                                   
                                   save_credentials(new_credentials(name,user_name,password))
-                              elif short_code == 'ex':
-                                  print('You have successfully logged out. See you next time!')
-                                  break
+                              elif short_code == 'dl':
+                                   print("Enter the name of the Credential you want to delete")
+                                   cred_name = input()
 
+                                   if find_credential(cred_name) == None:
+                                     print('Credentials does not exist')
+                                   else:
+                                     search_cred = find_credential(cred_name)
+                                     search_cred.delete_cred()
+                                     print('\n')
+                                     print(f"Your stored credentials for : {search_cred.credential_name} successfully deleted!!!")
+                                     print('\n')
+                    
+
+                              elif short_code == 'lg':
+                                  print('You have successfully logged out.')
+                                  print('\n')
+                                  break
+                                  
 
 
 
@@ -162,7 +187,7 @@ def main():
 
 
                     elif short_code == 'ex':
-                        print("bye")
+                        print("See you next time!")
                         break
 
                             
