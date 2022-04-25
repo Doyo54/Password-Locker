@@ -38,7 +38,7 @@ def save_credentials(credentials):
 
 def display_cred():
     '''
-    Function that returns all the saved users
+    Fucntion that returns all the saved users
     '''
     return Credentials.display_cred()
 
@@ -107,13 +107,27 @@ def main():
                                    print("New User")
                                    print("-"*10)
 
-                                   print ("User name ....")
-                                   name = input()
-
-                                   print("Password ...")
-                                   password = input()
+                                   name = input("User name: ")
+                                   password = input("Password: ")
 
                                    save_credentials(new_credentials(name,password))
+                                      
+                              elif short_code == 'dc':
+
+                                  if display_cred():
+                                    print("You have the following credentials saved:")
+                                    print('\n')
+
+                                    for credentials in display_cred():
+                                        print(f"Username: {credentials.credential_name} Password: {credentials.credential_password}")
+
+                                    print('\n')
+                                  else:
+                                    print('\n')
+                                    print("You dont seem to have any accounts saved yet")
+                                    print('\n')
+
+                               
                                   
                                    
 
