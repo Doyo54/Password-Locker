@@ -5,7 +5,7 @@ class Credentials:
 
     def __init__(self, credential_name,credential_user_name, credential_password):
         '''
-        __init__ method to define the properties of a User object
+        __init__ method to define the properties of a Credentials object
         '''
         self.credential_name = credential_name
         self.credential_user_name = credential_user_name
@@ -19,15 +19,14 @@ class Credentials:
     
     def delete_cred(self):
         '''
-        delete_contact method deletes a saved contact from the contact_list
+        delete_cred method deletes a saved credential from the credentials_list
         '''
         Credentials.credentials_list.remove(self)
     
-
     @classmethod
     def display_cred(cls):
         '''
-        method that returns the contact list
+        method that returns the credentials list
         '''
         return cls.credentials_list       
 
@@ -37,22 +36,15 @@ class Credentials:
         Method that generates a random alphanumeric password
         '''
 
-        size = 8
-        alphanum = string.ascii_uppercase + string.digits + string.ascii_lowercase + "!@#$%^&*()"
-
-        # Create password
-        password = ''.join( random.choice(alphanum) for num in range(size) )
+        length = 10
+        alphanum = string.ascii_uppercase + string.digits + string.ascii_lowercase + "!@#$%^&*" 
+        password = ''.join( random.choice(alphanum) for num in range(length) )
         
         return password  
     @classmethod
     def find_Credential(cls,credential_name):
         '''
-        Method that takes in a number and returns a contact that matches that number.
-
-        Args:
-            number: Phone number to search for
-        Returns :
-            Contact of person that matches the number.
+        Method that takes in a credential name and returns a credentials that matches that name.
         '''
 
         for credentials in cls.credentials_list:

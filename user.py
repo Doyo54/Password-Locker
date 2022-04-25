@@ -20,7 +20,7 @@ class User:
     @classmethod
     def display_user(cls):
         '''
-        method that returns the contact list
+        method that returns the User list
         '''
         return cls.user_list    
 
@@ -35,4 +35,3 @@ class User:
                 return Credentials.credentials_list
 
         return False
-        
