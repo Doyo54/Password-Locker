@@ -1,5 +1,4 @@
 #!/usr/bin/env python3.9
-
 from user import User
 from credentials import Credentials
 def create_user(Uname,password):
@@ -26,8 +25,8 @@ def logIn(name, password):
         return User.log_in(name, password)
 
 
-def new_credentials(Cname, Cpassword):
-    new_credentials = Credentials(Cname,Cpassword)
+def new_credentials(cName, cuName, cPassword):
+    new_credentials = Credentials(cName, cuName,cPassword)
     return new_credentials
 
 def save_credentials(credentials):
@@ -41,6 +40,9 @@ def display_cred():
     Fucntion that returns all the saved users
     '''
     return Credentials.display_cred()
+
+def random_password():
+    return Credentials.generate_password()
 
 def main():
             print("Hello Welcome to your Password locker. What is your name?")
@@ -103,15 +105,17 @@ def main():
                           while True:
                               print('Use these short codes to get around: cc - Create new credentials, dc -Display credentials, cg - Create crendentials with generated Password, ex -Exit')
                               short_code = input().lower()
-                              
+
                               if short_code == 'cc':
                                    print("New User")
                                    print("-"*10)
-
-                                   name = input("User name: ")
+                                   credential = input('Credentials name: ')
+                                   user_name = input(f"{credential} Username: ")
                                    password = input("Password: ")
 
-                                   save_credentials(new_credentials(name,password))
+                                   save_credentials(new_credentials(credential,user_name,password))
+                                   print(f"Credentials for {credential} succesfully created")
+                                   print('\n')
                                       
                               elif short_code == 'dc':
 
@@ -120,17 +124,29 @@ def main():
                                     print('\n')
 
                                     for credentials in display_cred():
-                                        print(f"Username: {credentials.credential_name} Password: {credentials.credential_password}")
+                                        print(f"{credentials.credential_name} account")
+                                        print(f"Username: {credentials.credential_user_name} Password: {credentials.credential_password}")
 
                                     print('\n')
                                   else:
                                     print('\n')
                                     print("You dont seem to have any Credentials saved yet")
                                     print('\n')
+                              elif short_code == 'cg':
 
-                               
+                                  name = input("Credential name: ")
+                                  user_name =input("User name: ")
+                                  print("Password succesfully generated")
                                   
+                                  password = random_password()
+                                  
+                                  print(f"Password: {password}")
+                                  print('\n')
                                    
+                                  save_credentials(new_credentials(name,user_name,password))
+                              elif short_code == 'ex':
+                                  print('You have successfully logged out. See you next time!')
+                                  break
 
 
 
