@@ -5,3 +5,4 @@
 ## Screenshots
 
 ![image](./Assests/image1.png)
+![image2](./Assests/image2.png)
