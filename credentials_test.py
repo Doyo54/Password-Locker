@@ -59,7 +59,20 @@ class testCredentials(unittest.TestCase):
         
         generated_password = self.new_credentials.generate_password()
 
-        self.assertEqual(len(generated_password), 10 )   
+        self.assertEqual(len(generated_password), 10 )  
+
+    def test_find_contact_by_number(self):
+        '''
+        test to check if we can find a credential by name and display its information
+        '''
+
+        self.new_credentials.save_credentials()
+        test_cred = Credentials("Snapchat","kev","kev_123") # new credentials
+        test_cred.save_credentials()
+
+        found_cred = Credentials.find_Credential("Snapchat")
+
+        self.assertEqual(found_cred.credential_name,test_cred.credential_name)     
     
 
 if __name__ == '__main__':
