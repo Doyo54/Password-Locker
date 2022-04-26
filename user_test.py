@@ -21,13 +21,13 @@ class TestUser(unittest.TestCase):
 
     def test_save_user(self):
         self.new_user.save_user()
-        self.assertEqual(len(User.user_list),3)
+        self.assertEqual(len(User.user_list),1)
 
     def tearDown(self):
         '''
         tearDown method that does clean up after each test case has run.
         '''
-        Credentials.credentials_list = []
+        User.user_list = []
 
     def test_display_all_Users(self):
         '''

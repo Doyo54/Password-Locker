@@ -1,6 +1,7 @@
 import string
 import random
 class Credentials:
+
     credentials_list=[] #empty list of credentials
 
     def __init__(self, credential_name,credential_user_name, credential_password):
@@ -37,10 +38,11 @@ class Credentials:
         '''
 
         length = 10
-        alphanum = string.ascii_uppercase + string.digits + string.ascii_lowercase + "!@#$%^&*" 
+        alphanum = string.digits + string.ascii_uppercase + string.ascii_lowercase + "!@#$%^&*" 
         password = ''.join( random.choice(alphanum) for num in range(length) )
         
         return password  
+        
     @classmethod
     def find_Credential(cls,credential_name):
         '''

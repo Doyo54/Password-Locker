@@ -1,4 +1,3 @@
-from curses.ascii import CR
 import unittest
 from credentials import Credentials
 
@@ -44,7 +43,6 @@ class testCredentials(unittest.TestCase):
         self.new_credentials.delete_cred()# Deleting a credential object
         self.assertEqual(len(Credentials.credentials_list),1)    
     
-
     def test_display_credentials(self):
         '''
         test case that test to check if we receive the list of the saved credential
@@ -58,7 +56,6 @@ class testCredentials(unittest.TestCase):
         '''
         
         generated_password = self.new_credentials.generate_password()
-
         self.assertEqual(len(generated_password), 10 )  
 
     def test_find_contact_by_number(self):
@@ -74,6 +71,5 @@ class testCredentials(unittest.TestCase):
 
         self.assertEqual(found_cred.credential_name,test_cred.credential_name)     
     
-
 if __name__ == '__main__':
     unittest.main()        

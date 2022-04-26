@@ -1,4 +1,5 @@
 from credentials import Credentials
+
 class User:
     '''
     Class that generates instances of user accounts

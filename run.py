@@ -1,5 +1,4 @@
 #!/usr/bin/env python3.9
-from cgi import print_form
 from user import User
 from credentials import Credentials
 def create_user(Uname,password):
@@ -49,9 +48,9 @@ def random_password():
     return Credentials.generate_password()
 
 def delete_credential(credentials):
-    """
+    '''
     Function to delete a credential from credentials list
-    """
+    '''
     credentials.delete_cred()
 
 def find_credential(credential_name):
@@ -70,9 +69,9 @@ def main():
             while True:
                     print('='*20)
                     print("Use these short codes : \n ca - Create a Password Locker account \n lg - Login into existing account \n dc - Display existing accounts \n ex - Exit App")  
-                    short_code = input().lower()
+                    code = input().lower()
 
-                    if short_code == 'ca':
+                    if code == 'ca':
 
                             print('\n')
                             print("New User")
@@ -88,7 +87,7 @@ Welcome! In this application you can create credentials and save them here for l
                        --------------------
                             ''')
                           
-                    elif short_code == 'dc':
+                    elif code == 'dc':
                             if display_user():
                                 print("You have the following accounts:")
                                 print('\n')
@@ -102,7 +101,7 @@ Welcome! In this application you can create credentials and save them here for l
                                 print("You dont seem to have any accounts saved yet")
                                 print('\n')
 
-                    elif short_code == 'lg':
+                    elif code == 'lg':
 
                         print("\n")
                         print("Log into Password Locker Account")
@@ -123,11 +122,11 @@ Welcome! In this application you can create credentials and save them here for l
 
                           while True:
 
-                              print('='*20)
+                              print('-'*20)
                               print('Use these short codes: \n cc - Create new credentials \n dc -Display credentials \n cg - Create crendentials with generated Password \n dl - Delete credential \n lg - Log out')
-                              short_code = input().lower()
+                              code = input().lower()
 
-                              if short_code == 'cc':
+                              if code == 'cc':
                                    print('\n')
                                    print("New Account Credentials")
                                    print("-"*22)
@@ -140,7 +139,7 @@ Welcome! In this application you can create credentials and save them here for l
                                    print(f"Credentials for {credential} succesfully created")
                                    print('\n')
                                       
-                              elif short_code == 'dc':
+                              elif code == 'dc':
 
                                   if display_cred():
                                     print('\n')
@@ -160,7 +159,7 @@ Welcome! In this application you can create credentials and save them here for l
                                     print("You dont seem to have any Credentials saved yet")
                                     print('\n')
 
-                              elif short_code == 'cg':
+                              elif code == 'cg':
 
                                   print('\n')
                                   name = input("Credential name: ")
@@ -171,7 +170,7 @@ Welcome! In this application you can create credentials and save them here for l
                                   print('\n')
                                   save_credentials(new_credentials(name,user_name,password))
 
-                              elif short_code == 'dl':
+                              elif code == 'dl':
 
                                    print('\n')
                                    print("Enter the name of the Credential you want to delete")
@@ -188,13 +187,13 @@ Welcome! In this application you can create credentials and save them here for l
                                      print(f"Your stored credentials for {search_cred.credential_name} successfully deleted!!!")
                                      print('\n')
                     
-                              elif short_code == 'lg':
+                              elif code == 'lg':
 
                                   print('You have successfully logged out.')
                                   print('\n')
                                   break
 
-                    elif short_code == 'ex':
+                    elif code == 'ex':
                         print("See you next time!")
                         break
 
